@@ -142,7 +142,7 @@ export const artworks: Artwork[] = [
       en: 'These statues guarded the relics of ancestors and were placed on boxes containing their bones. They embody spiritual strength and family continuity.',
       wo: 'Yii xibaar dañuy gëm jafe yu mbokk te dañuy am doole ak njëriñ ci wàllu mbokk.'
     },
-    imageUrl: 'https://tse3.mm.bing.net/th/id/OIP.vjvLk_IyH-pfK7nO1zGQIAHaJ4?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3',
+    imageUrl: 'https://i.pinimg.com/736x/b6/8d/4b/b68d4bdd181883aaff2889c267cc0890.jpg',
     category: 'sculpture',
     videoUrl: 'https://example.com/video-statue-fang.mp4'
   },
@@ -288,7 +288,7 @@ export const artworks: Artwork[] = [
       en: 'Benin bronzes are among the masterpieces of African art. They adorned the royal palace and testify to the artistic and technical refinement of this civilization.',
       wo: 'Bronze yu Bénin dañu am ci jafe yu mag yu art bu Afrika. Dañuy melni soxla ak teknik bu mag.'
     },
-    imageUrl: 'https://images.unsplash.com/photo-1671265178416-932415d2bbae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhZnJpY2FuJTIwYnJvbnplJTIwc2N1bHB0dXJlJTIwdHJhZGl0aW9uYWx8ZW58MXx8fHwxNzU5ODgwMTk1fDA&ixlib=rb-4.1.0&q=80&w=1080',
+    imageUrl: 'https://i.pinimg.com/736x/c3/83/17/c383178eb5f6f0b8ca87dea1426a6fc1.jpg',
     category: 'sculpture',
     artist: {
       fr: 'Artisan Edo',
@@ -420,7 +420,7 @@ export const artworks: Artwork[] = [
       en: 'Bogolan or "mud cloth" is a traditional Malian dyeing technique. Each pattern tells a story and transmits cultural values.',
       wo: 'Bogolan mooy ndongo bu teint ak tànk. Benn benn nataal am na ci tàriix.'
     },
-    imageUrl: 'https://images.unsplash.com/photo-1710559055621-451811ff73ad?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhZnJpY2FuJTIwdGV4dGlsZSUyMHdlYXZpbmclMjBjb2xvcmZ1bHxlbnwxfHx8fDE3NTk4ODAxOTh8MA&ixlib=rb-4.1.0&q=80&w=1080',
+    imageUrl: 'https://i.pinimg.com/736x/1a/d3/8c/1ad38caf77a1930ef57c4702c649765a.jpg',
     category: 'tapestry',
     artist: {
       fr: 'Tisserands Bamana',
@@ -514,7 +514,7 @@ export const artworks: Artwork[] = [
       en: 'Through filmed testimonies and interactive maps, this work gives voice to migrants and questions contemporary issues.',
       wo: 'Ci video yi ak carte yi interactives, jafe ji dafa wax ak migrants yi.'
     },
-    imageUrl: 'https://images.unsplash.com/photo-1615074918377-9f1273ced69e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkaWdpdGFsJTIwYXJ0JTIwcHJvamVjdGlvbiUyMGFmcmljYW4lMjBjdWx0dXJlfGVufDF8fHx8MTc1OTg4MDIwMnww&ixlib=rb-4.1.0&q=80&w=1080',
+    imageUrl: 'https://i.pinimg.com/736x/31/0b/49/310b493d4752915139a93184e545236b.jpg',
     category: 'videoart',
     artist: {
       fr: 'Collectif Diasporas',
@@ -546,7 +546,7 @@ export const artworks: Artwork[] = [
       en: 'This immersive installation combines traditional sounds, ancestral songs and light projections to create a dialogue between past and present.',
       wo: 'Installation bi dafa ñeex xew yu gàddi, baat yu mbokk ak yeeg ngir def waxtaan ci kow ak léegi.'
     },
-    imageUrl: 'https://images.unsplash.com/photo-1690812258830-694b8a7bd56a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb250ZW1wb3JhcnklMjBhcnQlMjBpbnN0YWxsYXRpb24lMjBtdXNldW0lMjBhZnJpY2F8ZW58MXx8fHwxNzU5ODgwMjAxfDA&ixlib=rb-4.1.0&q=80&w=1080',
+    imageUrl: 'https://i.pinimg.com/736x/75/1f/08/751f08970baecdfb72a35f94f6cbbd65.jpg',
     category: 'installation',
     artist: {
       fr: 'Khadija Fall',

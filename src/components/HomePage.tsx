@@ -294,18 +294,18 @@ export const HomePage: React.FC<HomePageProps> = ({
                 Découvrez les trésors du patrimoine africain dans un cadre exceptionnel
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <Button 
-                  size="lg"
-                  className="bg-[#EED7C5] text-[#93441A] hover:bg-[#EED7C5]/90 px-8 py-6 border-2 border-[#EED7C5] shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 animate-pulse hover:animate-none"
-                  onClick={() => onNavigate('visit')}
+                <Button
+                    size="lg"
+                    className="bg-[#EED7C5] text-[#93441A] hover:bg-[#EED7C5]/90 px-8 py-6 border-2 border-[#EED7C5] shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 animate-pulse hover:animate-none"
+                    onClick={() => onNavigate('visit')}
                 >
                   {t('action.bookTicket')}
                 </Button>
-                <Button 
-                  variant="outline" 
-                  size="lg"
-                  className="bg-white/10 border-white/20 text-white hover:bg-white/20 px-8 py-6 backdrop-blur-sm hover:scale-105 transition-all duration-300"
-                  onClick={() => onNavigate('virtual360')}
+                <Button
+                    variant="outline"
+                    size="lg"
+                    className="bg-white/10 border-white/20 text-white hover:bg-white/20 px-8 py-6 backdrop-blur-sm hover:scale-105 transition-all duration-300"
+                    onClick={() => onNavigate('tours')}
                 >
                   {t('home.virtualTour')}
                 </Button>

@@ -194,18 +194,16 @@ export const ArtworkDetail: React.FC<ArtworkDetailProps> = ({
             </Card>
 
             {/* Cultural Information */}
-            {artwork.culturalInfo && (
-              <Card>
-                <CardHeader>
-                  <CardTitle>{t('details.culturalInfo')}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-lg leading-relaxed">
-                    {artwork.culturalInfo[language]}
-                  </p>
-                </CardContent>
-              </Card>
-            )}
+            <Card>
+              <CardHeader>
+                <CardTitle>{t('details.culturalInfo')}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-lg leading-relaxed">
+                  {artwork.culturalInfo[language]}
+                </p>
+              </CardContent>
+            </Card>
 
             {/* Technical Details */}
             <Card>

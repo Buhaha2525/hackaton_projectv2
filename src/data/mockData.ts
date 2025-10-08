@@ -748,7 +748,7 @@ export const getFeaturedArtworks = (categoryId?: string): Artwork[] => {
   if (categoryId) {
     return artworks.filter(a => a.category === categoryId).slice(0, 3);
   }
-
+  
   const featured: Artwork[] = [];
   categories.forEach(cat => {
     const categoryArtworks = artworks.filter(a => a.category === cat.id);

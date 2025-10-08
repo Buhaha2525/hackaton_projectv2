@@ -10,7 +10,7 @@ export interface Artwork {
   id: string;
   title: Translation;
   description: Translation;
-  culturalInfo?: Translation;
+  culturalInfo: Translation;
   audioUrl?: string;
   videoUrl?: string;
   imageUrl: string;
@@ -19,16 +19,14 @@ export interface Artwork {
   period?: Translation;
   materials?: Translation;
   dimensions?: Translation;
-  year?: number;
-  qrCodeData?: string;
 }
 
 export type CategoryType = 
   | 'sculpture'
-  | 'peinture'
-  | 'photographie'
-  | 'tapisserie'
-  | 'video-art'
+  | 'painting'
+  | 'photography'
+  | 'tapestry'
+  | 'videoart'
   | 'installation';
 
 export interface Category {

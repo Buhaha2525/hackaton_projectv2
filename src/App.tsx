@@ -11,7 +11,6 @@ import { MagazinePage } from './components/MagazinePage';
 import { VisitInfoPage } from './components/VisitInfoPage';
 import { QRScanPage } from './components/QRScanPage';
 import { VirtualTourPage } from './components/VirtualTourPage';
-import { VirtualRoom360 } from './components/VirtualRoom360';
 import { CollectionsPage } from './components/CollectionsPage';
 import { UserProfile } from './components/UserProfile';
 import { HistoryPage } from './components/HistoryPage';
@@ -20,7 +19,7 @@ import { Footer } from './components/Footer';
 import { Artwork, CategoryType } from './types';
 import { artworks } from './data/mockData';
 
-type View = 'home' | 'category' | 'artwork' | 'about' | 'contact' | 'events' | 'magazine' | 'scan' | 'visit' | 'tours' | 'profile' | 'collections' | 'history' | 'virtual360';
+type View = 'home' | 'category' | 'artwork' | 'about' | 'contact' | 'events' | 'magazine' | 'scan' | 'visit' | 'tours' | 'profile' | 'collections' | 'history';
 
 interface AppState {
   view: View;
@@ -34,7 +33,7 @@ export default function App() {
     view: 'home'
   });
 
-  const handleNavigate = (view: 'home' | 'category' | 'about' | 'contact' | 'events' | 'magazine' | 'scan' | 'visit' | 'tours' | 'profile' | 'collections' | 'history' | 'virtual360') => {
+  const handleNavigate = (view: 'home' | 'category' | 'about' | 'contact' | 'events' | 'magazine' | 'scan' | 'visit' | 'tours' | 'profile' | 'collections' | 'history') => {
     setAppState({ view, selectedCategory: undefined, selectedArtwork: undefined });
   };
 
@@ -180,13 +179,6 @@ export default function App() {
         
         {appState.view === 'history' && (
           <HistoryPage onBack={handleBack} />
-        )}
-        
-        {appState.view === 'virtual360' && (
-          <VirtualRoom360 
-            onBack={handleBack}
-            onArtworkClick={handleArtworkClick}
-          />
         )}
         
         <Footer onNavigate={handleNavigate} />

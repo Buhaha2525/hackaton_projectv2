@@ -62,7 +62,7 @@ export const VirtualRoom360: React.FC<VirtualRoom360Props> = ({ onBack, onArtwor
         materials: { fr: 'Huile sur toile', en: 'Oil on canvas', wo: 'Alkat ci tëdd' }
       }
     },
-    // Mur de droite  
+    // Mur de droite
     {
       id: '3',
       wall: 'right',
@@ -149,10 +149,10 @@ export const VirtualRoom360: React.FC<VirtualRoom360Props> = ({ onBack, onArtwor
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!isDragging) return;
-    
+
     const deltaX = e.clientX - dragStart.x;
     const deltaY = e.clientY - dragStart.y;
-    
+
     setRotationY(prev => prev + deltaX * 0.5);
     setRotationX(prev => Math.max(-30, Math.min(30, prev - deltaY * 0.3)));
     setDragStart({ x: e.clientX, y: e.clientY });
@@ -208,17 +208,17 @@ export const VirtualRoom360: React.FC<VirtualRoom360Props> = ({ onBack, onArtwor
 
   const renderWall = (wallId: 'front' | 'right' | 'back' | 'left', transform: string) => {
     const wallArtworksList = wallArtworks.filter(wa => wa.wall === wallId);
-    
+
     return (
-      <div 
-        className={`absolute w-full h-full bg-gradient-to-b from-[#EED7C5]/20 to-[#B67332]/10 border border-[#93441A]/20 wall-${wallId}`}
-        style={{ transform }}
-      >
-        {/* Texture de mur */}
-        <div 
-          className="absolute inset-0 opacity-30"
-          style={{
-            background: `
+        <div
+            className={`absolute w-full h-full bg-gradient-to-b from-[#EED7C5]/20 to-[#B67332]/10 border border-[#93441A]/20 wall-${wallId}`}
+            style={{ transform }}
+        >
+          {/* Texture de mur */}
+          <div
+              className="absolute inset-0 opacity-30"
+              style={{
+                background: `
               repeating-linear-gradient(
                 0deg,
                 transparent,
@@ -226,375 +226,375 @@ export const VirtualRoom360: React.FC<VirtualRoom360Props> = ({ onBack, onArtwor
                 rgba(147, 68, 26, 0.1) 101px
               )
             `
-          }}
-        />
-        
-        {/* Éclairage du mur */}
-        <div className="absolute inset-0 bg-gradient-to-b from-yellow-200/10 via-transparent to-orange-200/5"></div>
-        
-        {/* Œuvres sur ce mur */}
-        {wallArtworksList.map((wallArtwork) => {
-          const isVisited = visitedArtworks.has(wallArtwork.artwork.id);
-          return (
-            <motion.div
-              key={wallArtwork.id}
-              className="absolute cursor-pointer group"
-              style={{
-                left: `${wallArtwork.position.x}%`,
-                top: `${wallArtwork.position.y}%`,
-                transform: 'translate(-50%, -50%)'
               }}
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: Math.random() * 0.5 }}
-              onClick={() => handleArtworkSelect(wallArtwork.artwork)}
-            >
-              {/* Cadre de l'œuvre */}
-              <div className={`relative bg-gradient-to-br p-3 rounded-lg shadow-2xl transition-all duration-300 group-hover:scale-110 group-hover:shadow-[0_20px_40px_rgba(147,68,26,0.4)] ${
-                isVisited 
-                  ? 'from-[#EED7C5] to-[#B67332] shadow-[#EED7C5]/30' 
-                  : 'from-[#B67332] to-[#93441A] shadow-[#B67332]/30'
-              }`}>
-                <div className="bg-white p-2 rounded relative">
-                  <img
-                    src={wallArtwork.artwork.imageUrl}
-                    alt={wallArtwork.artwork.title[language]}
-                    className="w-24 h-18 object-cover rounded shadow-inner"
-                  />
-                  {/* Reflet sur le verre */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-transparent rounded pointer-events-none"></div>
-                  
-                  {/* Indicateur de visite */}
-                  {isVisited && (
-                    <div className="absolute top-1 right-1 w-3 h-3 bg-green-500 rounded-full border border-white shadow-sm">
-                      <div className="w-1 h-1 bg-white rounded-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
+          />
+
+          {/* Éclairage du mur */}
+          <div className="absolute inset-0 bg-gradient-to-b from-yellow-200/10 via-transparent to-orange-200/5"></div>
+
+          {/* Œuvres sur ce mur */}
+          {wallArtworksList.map((wallArtwork) => {
+            const isVisited = visitedArtworks.has(wallArtwork.artwork.id);
+            return (
+                <motion.div
+                    key={wallArtwork.id}
+                    className="absolute cursor-pointer group"
+                    style={{
+                      left: `${wallArtwork.position.x}%`,
+                      top: `${wallArtwork.position.y}%`,
+                      transform: 'translate(-50%, -50%)'
+                    }}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: Math.random() * 0.5 }}
+                    onClick={() => handleArtworkSelect(wallArtwork.artwork)}
+                >
+                  {/* Cadre de l'œuvre */}
+                  <div className={`relative bg-gradient-to-br p-3 rounded-lg shadow-2xl transition-all duration-300 group-hover:scale-110 group-hover:shadow-[0_20px_40px_rgba(147,68,26,0.4)] ${
+                      isVisited
+                          ? 'from-[#EED7C5] to-[#B67332] shadow-[#EED7C5]/30'
+                          : 'from-[#B67332] to-[#93441A] shadow-[#B67332]/30'
+                  }`}>
+                    <div className="bg-white p-2 rounded relative">
+                      <img
+                          src={wallArtwork.artwork.imageUrl}
+                          alt={wallArtwork.artwork.title[language]}
+                          className="w-24 h-18 object-cover rounded shadow-inner"
+                      />
+                      {/* Reflet sur le verre */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-transparent rounded pointer-events-none"></div>
+
+                      {/* Indicateur de visite */}
+                      {isVisited && (
+                          <div className="absolute top-1 right-1 w-3 h-3 bg-green-500 rounded-full border border-white shadow-sm">
+                            <div className="w-1 h-1 bg-white rounded-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
+                          </div>
+                      )}
                     </div>
-                  )}
-                </div>
-                
-                {/* Plaque descriptive */}
-                <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-[#93441A] text-white px-2 py-1 rounded text-xs opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-lg z-10">
-                  <div className="font-medium">{wallArtwork.artwork.title[language]}</div>
-                  <div className="text-[#EED7C5] text-xs">{wallArtwork.artwork.artist?.[language]}</div>
-                  <div className="absolute -top-1 left-1/2 transform -translate-x-1/2 border-2 border-transparent border-b-[#93441A]"></div>
-                </div>
-                
-                {/* Effet de pulse pour œuvres non visitées */}
-                {!isVisited && (
-                  <div className="absolute inset-0 rounded-lg animate-pulse bg-[#B67332]/20 pointer-events-none"></div>
-                )}
-                
-                {/* Icône d'interaction */}
-                <div className={`absolute -top-2 -right-2 w-5 h-5 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shadow-lg ${
-                  isVisited ? 'bg-green-500' : 'bg-[#EED7C5]'
-                }`}>
-                  <Info className={`w-2.5 h-2.5 ${isVisited ? 'text-white' : 'text-[#93441A]'}`} />
-                </div>
-              </div>
-            </motion.div>
-          );
-        })}
-      </div>
+
+                    {/* Plaque descriptive */}
+                    <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-[#93441A] text-white px-2 py-1 rounded text-xs opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-lg z-10">
+                      <div className="font-medium">{wallArtwork.artwork.title[language]}</div>
+                      <div className="text-[#EED7C5] text-xs">{wallArtwork.artwork.artist?.[language]}</div>
+                      <div className="absolute -top-1 left-1/2 transform -translate-x-1/2 border-2 border-transparent border-b-[#93441A]"></div>
+                    </div>
+
+                    {/* Effet de pulse pour œuvres non visitées */}
+                    {!isVisited && (
+                        <div className="absolute inset-0 rounded-lg animate-pulse bg-[#B67332]/20 pointer-events-none"></div>
+                    )}
+
+                    {/* Icône d'interaction */}
+                    <div className={`absolute -top-2 -right-2 w-5 h-5 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shadow-lg ${
+                        isVisited ? 'bg-green-500' : 'bg-[#EED7C5]'
+                    }`}>
+                      <Info className={`w-2.5 h-2.5 ${isVisited ? 'text-white' : 'text-[#93441A]'}`} />
+                    </div>
+                  </div>
+                </motion.div>
+            );
+          })}
+        </div>
     );
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#1a1312] to-[#0f0a08] relative overflow-hidden">
-      {/* Header Controls */}
-      <div className="absolute top-0 left-0 right-0 z-20 bg-gradient-to-b from-black/80 to-transparent p-4">
-        <div className="flex items-center justify-between">
-          <Button
-            variant="outline"
-            onClick={onBack}
-            className="bg-white/10 border-white/20 text-white hover:bg-white/20 backdrop-blur-sm"
-          >
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Retour
-          </Button>
-          
-          <div className="text-center">
-            <h1 className="text-xl font-medium text-white mb-1">Salle des Civilisations</h1>
-            <p className="text-white/70 text-sm">Visite virtuelle 3D • {visitedArtworks.size}/{wallArtworks.length} œuvres découvertes</p>
-          </div>
-
-          <div className="flex items-center gap-2">
+      <div className="min-h-screen bg-gradient-to-b from-[#1a1312] to-[#0f0a08] relative overflow-hidden">
+        {/* Header Controls */}
+        <div className="absolute top-0 left-0 right-0 z-20 bg-gradient-to-b from-black/80 to-transparent p-4">
+          <div className="flex items-center justify-between">
             <Button
-              variant="outline"
-              size="sm"
-              onClick={() => setAudioEnabled(!audioEnabled)}
-              className="bg-white/10 border-white/20 text-white hover:bg-white/20 backdrop-blur-sm"
+                variant="outline"
+                onClick={onBack}
+                className="bg-white/10 border-white/20 text-white hover:bg-white/20 backdrop-blur-sm"
             >
-              {audioEnabled ? <Volume2 className="w-4 h-4" /> : <VolumeX className="w-4 h-4" />}
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              Retour
             </Button>
+
+            <div className="text-center">
+              <h1 className="text-xl font-medium text-white mb-1">Salle des Civilisations</h1>
+              <p className="text-white/70 text-sm">Visite virtuelle 3D • {visitedArtworks.size}/{wallArtworks.length} œuvres découvertes</p>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => setAudioEnabled(!audioEnabled)}
+                  className="bg-white/10 border-white/20 text-white hover:bg-white/20 backdrop-blur-sm"
+              >
+                {audioEnabled ? <Volume2 className="w-4 h-4" /> : <VolumeX className="w-4 h-4" />}
+              </Button>
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* Salle 3D */}
-      <div 
-        ref={containerRef}
-        className="absolute inset-0 cursor-grab active:cursor-grabbing perspective-[1000px]"
-        onMouseDown={handleMouseDown}
-        onMouseMove={handleMouseMove}
-        onMouseUp={handleMouseUp}
-        onMouseLeave={handleMouseUp}
-      >
-        <div 
-          className="relative w-full h-full transform-gpu transition-transform duration-300 ease-out"
-          style={{
-            transform: `
+        {/* Salle 3D */}
+        <div
+            ref={containerRef}
+            className="absolute inset-0 cursor-grab active:cursor-grabbing perspective-[1000px]"
+            onMouseDown={handleMouseDown}
+            onMouseMove={handleMouseMove}
+            onMouseUp={handleMouseUp}
+            onMouseLeave={handleMouseUp}
+        >
+          <div
+              className="relative w-full h-full transform-gpu transition-transform duration-300 ease-out"
+              style={{
+                transform: `
               translateZ(${-300 + zoom * 200}px)
               rotateX(${rotationX}deg) 
               rotateY(${rotationY}deg)
               scale(${zoom})
             `,
-            transformStyle: 'preserve-3d'
-          }}
-        >
-          {/* Sol */}
-          <div 
-            className="absolute w-[800px] h-[800px] bg-gradient-to-r from-[#93441A]/30 to-[#B67332]/20 border border-[#EED7C5]/20"
-            style={{
-              transform: 'rotateX(90deg) translateZ(-200px)',
-              left: '50%',
-              top: '50%',
-              marginLeft: '-400px',
-              marginTop: '-400px',
-              background: `
+                transformStyle: 'preserve-3d'
+              }}
+          >
+            {/* Sol */}
+            <div
+                className="absolute w-[800px] h-[800px] bg-gradient-to-r from-[#93441A]/30 to-[#B67332]/20 border border-[#EED7C5]/20"
+                style={{
+                  transform: 'rotateX(90deg) translateZ(-200px)',
+                  left: '50%',
+                  top: '50%',
+                  marginLeft: '-400px',
+                  marginTop: '-400px',
+                  background: `
                 linear-gradient(45deg, rgba(147, 68, 26, 0.1) 25%, transparent 25%),
                 linear-gradient(-45deg, rgba(147, 68, 26, 0.1) 25%, transparent 25%),
                 linear-gradient(45deg, transparent 75%, rgba(147, 68, 26, 0.1) 75%),
                 linear-gradient(-45deg, transparent 75%, rgba(147, 68, 26, 0.1) 75%)
               `,
-              backgroundSize: '50px 50px',
-              backgroundPosition: '0 0, 0 25px, 25px -25px, -25px 0px'
-            }}
-          />
+                  backgroundSize: '50px 50px',
+                  backgroundPosition: '0 0, 0 25px, 25px -25px, -25px 0px'
+                }}
+            />
 
-          {/* Plafond */}
-          <div 
-            className="absolute w-[800px] h-[800px] bg-gradient-to-r from-[#2d1a0f] to-[#1a1312] border border-[#EED7C5]/10"
-            style={{
-              transform: 'rotateX(-90deg) translateZ(200px)',
-              left: '50%',
-              top: '50%',
-              marginLeft: '-400px',
-              marginTop: '-400px'
-            }}
-          />
+            {/* Plafond */}
+            <div
+                className="absolute w-[800px] h-[800px] bg-gradient-to-r from-[#2d1a0f] to-[#1a1312] border border-[#EED7C5]/10"
+                style={{
+                  transform: 'rotateX(-90deg) translateZ(200px)',
+                  left: '50%',
+                  top: '50%',
+                  marginLeft: '-400px',
+                  marginTop: '-400px'
+                }}
+            />
 
-          {/* Murs */}
-          {renderWall('front', 'translateZ(400px)')}
-          {renderWall('right', 'rotateY(90deg) translateZ(400px)')}
-          {renderWall('back', 'rotateY(180deg) translateZ(400px)')}
-          {renderWall('left', 'rotateY(-90deg) translateZ(400px)')}
+            {/* Murs */}
+            {renderWall('front', 'translateZ(400px)')}
+            {renderWall('right', 'rotateY(90deg) translateZ(400px)')}
+            {renderWall('back', 'rotateY(180deg) translateZ(400px)')}
+            {renderWall('left', 'rotateY(-90deg) translateZ(400px)')}
 
-          {/* Éclairage ambiant */}
-          <div 
-            className="absolute w-40 h-40 bg-yellow-200/20 rounded-full blur-3xl"
-            style={{ transform: 'translateZ(150px) translateX(-100px) translateY(-100px)' }}
-          />
-          <div 
-            className="absolute w-32 h-32 bg-orange-200/15 rounded-full blur-2xl"
-            style={{ transform: 'translateZ(150px) translateX(100px) translateY(100px)' }}
-          />
-        </div>
-      </div>
-
-      {/* Navigation rapide */}
-      <div className="absolute top-24 left-4 z-20">
-        <div className="bg-black/60 backdrop-blur-sm rounded-lg p-3 border border-white/20">
-          <h3 className="text-white text-sm font-medium mb-2 text-center">Navigation</h3>
-          <div className="grid grid-cols-3 gap-1">
-            <div></div>
-            <Button
-              size="sm"
-              variant="outline"
-              className="bg-white/10 border-white/20 text-white hover:bg-white/20 w-8 h-8 p-0"
-              onClick={() => quickNavigation('front')}
-            >
-              ↑
-            </Button>
-            <div></div>
-            <Button
-              size="sm"
-              variant="outline"
-              className="bg-white/10 border-white/20 text-white hover:bg-white/20 w-8 h-8 p-0"
-              onClick={() => quickNavigation('left')}
-            >
-              ←
-            </Button>
-            <Button
-              size="sm"
-              variant="outline"
-              className="bg-white/10 border-white/20 text-white hover:bg-white/20 w-8 h-8 p-0"
-              onClick={resetView}
-            >
-              <Home className="w-3 h-3" />
-            </Button>
-            <Button
-              size="sm"
-              variant="outline"
-              className="bg-white/10 border-white/20 text-white hover:bg-white/20 w-8 h-8 p-0"
-              onClick={() => quickNavigation('right')}
-            >
-              →
-            </Button>
-            <div></div>
-            <Button
-              size="sm"
-              variant="outline"
-              className="bg-white/10 border-white/20 text-white hover:bg-white/20 w-8 h-8 p-0"
-              onClick={() => quickNavigation('back')}
-            >
-              ↓
-            </Button>
-            <div></div>
+            {/* Éclairage ambiant */}
+            <div
+                className="absolute w-40 h-40 bg-yellow-200/20 rounded-full blur-3xl"
+                style={{ transform: 'translateZ(150px) translateX(-100px) translateY(-100px)' }}
+            />
+            <div
+                className="absolute w-32 h-32 bg-orange-200/15 rounded-full blur-2xl"
+                style={{ transform: 'translateZ(150px) translateX(100px) translateY(100px)' }}
+            />
           </div>
         </div>
-      </div>
 
-      {/* Contrôles de zoom */}
-      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-20">
-        <div className="flex items-center gap-4 bg-black/60 backdrop-blur-sm rounded-full px-6 py-3 border border-white/20">
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={handleZoomOut}
-            className="bg-white/10 border-white/20 text-white hover:bg-white/20 rounded-full w-10 h-10 p-0"
-          >
-            <ZoomOut className="w-4 h-4" />
-          </Button>
-          
-          <div className="text-white text-sm font-medium min-w-[60px] text-center">
-            {Math.round(zoom * 100)}%
-          </div>
-          
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={handleZoomIn}
-            className="bg-white/10 border-white/20 text-white hover:bg-white/20 rounded-full w-10 h-10 p-0"
-          >
-            <ZoomIn className="w-4 h-4" />
-          </Button>
-          
-          <div className="w-px h-6 bg-white/20 mx-2"></div>
-          
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={resetView}
-            className="bg-white/10 border-white/20 text-white hover:bg-white/20 rounded-full w-10 h-10 p-0"
-          >
-            <RotateCcw className="w-4 h-4" />
-          </Button>
-        </div>
-      </div>
-
-      {/* Instructions */}
-      <div className="absolute bottom-20 right-4 z-20">
-        <div className="bg-black/60 backdrop-blur-sm rounded-lg p-4 text-white max-w-xs border border-white/20">
-          <h3 className="font-medium mb-2 text-[#EED7C5]">Instructions</h3>
-          <ul className="text-sm space-y-1 opacity-80">
-            <li>• <span className="text-[#B67332]">Cliquez et glissez</span> pour explorer</li>
-            <li>• <span className="text-[#B67332]">Molette</span> pour zoomer</li>
-            <li>• <span className="text-[#B67332]">Flèches</span> pour navigation rapide</li>
-            <li>• <span className="text-[#B67332]">Cliquez sur les œuvres</span> pour les découvrir</li>
-          </ul>
-        </div>
-      </div>
-
-      {/* Progression */}
-      {visitedArtworks.size === wallArtworks.length && (
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30"
-        >
-          <div className="bg-gradient-to-r from-[#93441A] to-[#B67332] text-white p-6 rounded-xl shadow-2xl text-center border border-[#EED7C5]/30">
-            <div className="w-16 h-16 bg-[#EED7C5] rounded-full flex items-center justify-center mx-auto mb-4">
-              <Maximize2 className="w-8 h-8 text-[#93441A]" />
+        {/* Navigation rapide */}
+        <div className="absolute top-24 left-4 z-20">
+          <div className="bg-black/60 backdrop-blur-sm rounded-lg p-3 border border-white/20">
+            <h3 className="text-white text-sm font-medium mb-2 text-center">Navigation</h3>
+            <div className="grid grid-cols-3 gap-1">
+              <div></div>
+              <Button
+                  size="sm"
+                  variant="outline"
+                  className="bg-white/10 border-white/20 text-white hover:bg-white/20 w-8 h-8 p-0"
+                  onClick={() => quickNavigation('front')}
+              >
+                ↑
+              </Button>
+              <div></div>
+              <Button
+                  size="sm"
+                  variant="outline"
+                  className="bg-white/10 border-white/20 text-white hover:bg-white/20 w-8 h-8 p-0"
+                  onClick={() => quickNavigation('left')}
+              >
+                ←
+              </Button>
+              <Button
+                  size="sm"
+                  variant="outline"
+                  className="bg-white/10 border-white/20 text-white hover:bg-white/20 w-8 h-8 p-0"
+                  onClick={resetView}
+              >
+                <Home className="w-3 h-3" />
+              </Button>
+              <Button
+                  size="sm"
+                  variant="outline"
+                  className="bg-white/10 border-white/20 text-white hover:bg-white/20 w-8 h-8 p-0"
+                  onClick={() => quickNavigation('right')}
+              >
+                →
+              </Button>
+              <div></div>
+              <Button
+                  size="sm"
+                  variant="outline"
+                  className="bg-white/10 border-white/20 text-white hover:bg-white/20 w-8 h-8 p-0"
+                  onClick={() => quickNavigation('back')}
+              >
+                ↓
+              </Button>
+              <div></div>
             </div>
-            <h3 className="text-xl font-medium mb-2">Félicitations !</h3>
-            <p className="text-[#EED7C5] mb-4">Vous avez découvert toutes les œuvres de cette salle</p>
+          </div>
+        </div>
+
+        {/* Contrôles de zoom */}
+        <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-20">
+          <div className="flex items-center gap-4 bg-black/60 backdrop-blur-sm rounded-full px-6 py-3 border border-white/20">
             <Button
-              onClick={onBack}
-              className="bg-[#EED7C5] text-[#93441A] hover:bg-[#EED7C5]/90"
+                variant="outline"
+                size="sm"
+                onClick={handleZoomOut}
+                className="bg-white/10 border-white/20 text-white hover:bg-white/20 rounded-full w-10 h-10 p-0"
             >
-              Continuer la visite
+              <ZoomOut className="w-4 h-4" />
+            </Button>
+
+            <div className="text-white text-sm font-medium min-w-[60px] text-center">
+              {Math.round(zoom * 100)}%
+            </div>
+
+            <Button
+                variant="outline"
+                size="sm"
+                onClick={handleZoomIn}
+                className="bg-white/10 border-white/20 text-white hover:bg-white/20 rounded-full w-10 h-10 p-0"
+            >
+              <ZoomIn className="w-4 h-4" />
+            </Button>
+
+            <div className="w-px h-6 bg-white/20 mx-2"></div>
+
+            <Button
+                variant="outline"
+                size="sm"
+                onClick={resetView}
+                className="bg-white/10 border-white/20 text-white hover:bg-white/20 rounded-full w-10 h-10 p-0"
+            >
+              <RotateCcw className="w-4 h-4" />
             </Button>
           </div>
-        </motion.div>
-      )}
+        </div>
 
-      {/* Modal détail œuvre */}
-      <AnimatePresence>
-        {selectedArtwork && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/80 flex items-center justify-center p-4 z-50"
-            onClick={() => setSelectedArtwork(null)}
-          >
+        {/* Instructions */}
+        <div className="absolute bottom-20 right-4 z-20">
+          <div className="bg-black/60 backdrop-blur-sm rounded-lg p-4 text-white max-w-xs border border-white/20">
+            <h3 className="font-medium mb-2 text-[#EED7C5]">Instructions</h3>
+            <ul className="text-sm space-y-1 opacity-80">
+              <li>• <span className="text-[#B67332]">Cliquez et glissez</span> pour explorer</li>
+              <li>• <span className="text-[#B67332]">Molette</span> pour zoomer</li>
+              <li>• <span className="text-[#B67332]">Flèches</span> pour navigation rapide</li>
+              <li>• <span className="text-[#B67332]">Cliquez sur les œuvres</span> pour les découvrir</li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Progression */}
+        {visitedArtworks.size === wallArtworks.length && (
             <motion.div
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.8, opacity: 0 }}
-              className="bg-white rounded-xl max-w-2xl w-full overflow-hidden shadow-2xl border border-[#B67332]/20"
-              onClick={(e) => e.stopPropagation()}
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30"
             >
-              <div className="relative h-64">
-                <img
-                  src={selectedArtwork.imageUrl}
-                  alt={selectedArtwork.title[language]}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                <div className="absolute bottom-4 left-4 text-white">
-                  <h2 className="text-2xl font-medium mb-1">{selectedArtwork.title[language]}</h2>
-                  <p className="text-sm text-[#EED7C5]">{selectedArtwork.artist?.[language]} • {selectedArtwork.year}</p>
+              <div className="bg-gradient-to-r from-[#93441A] to-[#B67332] text-white p-6 rounded-xl shadow-2xl text-center border border-[#EED7C5]/30">
+                <div className="w-16 h-16 bg-[#EED7C5] rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Maximize2 className="w-8 h-8 text-[#93441A]" />
                 </div>
-              </div>
-              
-              <div className="p-6">
-                <p className="text-muted-foreground mb-4">
-                  {selectedArtwork.description[language]}
-                </p>
-                
-                {selectedArtwork.materials && (
-                  <div className="mb-4">
-                    <h4 className="font-medium text-[#93441A] mb-1">Matériaux</h4>
-                    <p className="text-sm text-muted-foreground">{selectedArtwork.materials[language]}</p>
-                  </div>
-                )}
-                
-                <div className="flex gap-3">
-                  <Button
-                    className="flex-1 bg-gradient-to-r from-[#93441A] to-[#B67332] hover:from-[#7a3715] hover:to-[#9e5f29]"
-                    onClick={() => {
-                      setSelectedArtwork(null);
-                      if (onArtworkClick) {
-                        onArtworkClick(selectedArtwork);
-                      }
-                    }}
-                  >
-                    Voir les détails complets
-                  </Button>
-                  <Button
-                    variant="outline"
-                    onClick={() => setSelectedArtwork(null)}
-                    className="border-[#B67332] text-[#B67332] hover:bg-[#B67332] hover:text-white"
-                  >
-                    Fermer
-                  </Button>
-                </div>
+                <h3 className="text-xl font-medium mb-2">Félicitations !</h3>
+                <p className="text-[#EED7C5] mb-4">Vous avez découvert toutes les œuvres de cette salle</p>
+                <Button
+                    onClick={onBack}
+                    className="bg-[#EED7C5] text-[#93441A] hover:bg-[#EED7C5]/90"
+                >
+                  Continuer la visite
+                </Button>
               </div>
             </motion.div>
-          </motion.div>
         )}
-      </AnimatePresence>
-    </div>
+
+        {/* Modal détail œuvre */}
+        <AnimatePresence>
+          {selectedArtwork && (
+              <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="fixed inset-0 bg-black/80 flex items-center justify-center p-4 z-50"
+                  onClick={() => setSelectedArtwork(null)}
+              >
+                <motion.div
+                    initial={{ scale: 0.8, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    exit={{ scale: 0.8, opacity: 0 }}
+                    className="bg-white rounded-xl max-w-2xl w-full overflow-hidden shadow-2xl border border-[#B67332]/20"
+                    onClick={(e) => e.stopPropagation()}
+                >
+                  <div className="relative h-64">
+                    <img
+                        src={selectedArtwork.imageUrl}
+                        alt={selectedArtwork.title[language]}
+                        className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                    <div className="absolute bottom-4 left-4 text-white">
+                      <h2 className="text-2xl font-medium mb-1">{selectedArtwork.title[language]}</h2>
+                      <p className="text-sm text-[#EED7C5]">{selectedArtwork.artist?.[language]} • {selectedArtwork.year}</p>
+                    </div>
+                  </div>
+
+                  <div className="p-6">
+                    <p className="text-muted-foreground mb-4">
+                      {selectedArtwork.description[language]}
+                    </p>
+
+                    {selectedArtwork.materials && (
+                        <div className="mb-4">
+                          <h4 className="font-medium text-[#93441A] mb-1">Matériaux</h4>
+                          <p className="text-sm text-muted-foreground">{selectedArtwork.materials[language]}</p>
+                        </div>
+                    )}
+
+                    <div className="flex gap-3">
+                      <Button
+                          className="flex-1 bg-gradient-to-r from-[#93441A] to-[#B67332] hover:from-[#7a3715] hover:to-[#9e5f29]"
+                          onClick={() => {
+                            setSelectedArtwork(null);
+                            if (onArtworkClick) {
+                              onArtworkClick(selectedArtwork);
+                            }
+                          }}
+                      >
+                        Voir les détails complets
+                      </Button>
+                      <Button
+                          variant="outline"
+                          onClick={() => setSelectedArtwork(null)}
+                          className="border-[#B67332] text-[#B67332] hover:bg-[#B67332] hover:text-white"
+                      >
+                        Fermer
+                      </Button>
+                    </div>
+                  </div>
+                </motion.div>
+              </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
   );
 };
